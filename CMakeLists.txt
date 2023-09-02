@@ -28,6 +28,9 @@ if(NOT EXISTS "${PROJECT_SOURCE_DIR}/src/glfw/CMakeLists.txt")
 endif()
 
 add_subdirectory(src/glfw)
+add_subdirectory(src/glm)
+
+find_package(Vulkan REQUIRED)
 
 target_include_directories(${PROJECT_NAME} 
         PUBLIC libs/demo_lib 
@@ -39,4 +42,4 @@ target_link_directories(${PROJECT_NAME}
         PRIVATE src/glfw/src
     )
 
-target_link_libraries(${PROJECT_NAME} demo_lib glfw)
+target_link_libraries(${PROJECT_NAME} demo_lib glm Vulkan::Vulkan glfw)
